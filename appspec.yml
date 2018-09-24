@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+    - source: ./
+      destination: /path/to/webroot
+permissions:
+    - object: /path/to/webroot/
+      owner: <webroot owner> #i.e apache, www-data
+      group: <webroot owner> #i.e apache, www-data
+hooks:
+    BeforeInstall:
+        - location: scripts/beforeInstall.bash
+          runas: root
+    AfterInstall:
+        - location: scripts/afterInstall.bash
+          runas: root
